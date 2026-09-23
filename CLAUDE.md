@@ -9,8 +9,8 @@ Plain HTML/CSS static site, deployed on Netlify (forms via Netlify Forms). Rebui
 - $20 is the non-veteran ticket price, not a sponsorship. Don't use "sponsor a seat for $20". Sponsor tiers start at $100 (Friend = any amount).
 - Welcome Home Vietnam Veterans: listed on Events, date TBD.
 - HOH is a 501(c)(3); donations/sponsorships tax-deductible. Cash or check only, payable to "Honoring Our Heroes", memo "Veterans Event".
-- Veterans-only drawing for a Bad Boy ZT Elite mower (sponsored by Choo Choo Lawn); military ID required.
-- 4 ticket locations: Bruton Library, YMCA, Walden Lake Car Wash, Choo Choo Lawn (off Sydney Rd).
+- Veterans-only drawing for a Bad Boy ZT Elite mower (sponsored by Choo Choo Lawn Equipment, 3206 Sydney Rd, Plant City, FL 33566); military ID required.
+- 4 ticket locations: Bruton Library, YMCA, Walden Lake Car Wash, Choo Choo Lawn Equipment (3206 Sydney Rd).
 - Event is hosted in Plant City but open to all veterans — don't say "Plant City's veterans".
 
 ## Accessibility (required on every page)
