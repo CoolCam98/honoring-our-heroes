@@ -21,3 +21,4 @@ Plain HTML/CSS static site, deployed on Netlify (forms via Netlify Forms). Rebui
 - Pages: `/`, `/about/` (+ `/about/friends/`, `/about/partners/`), `/events/`, `/gallery/`, `/contact/`, `/support/` (+ `/support/sponsor/`, `/support/donate/`, `/support/volunteer/`).
 - Footer: HOH logo, "Presented by Judy & Ed Wise", Veterans Crisis Line, © + "Website by Premium Media". No nav links in footer.
 - Missing links/images are marked `TODO` in comments.
+- New pages: `python3 tools/new-page.py` copies the header/footer from index.html.
