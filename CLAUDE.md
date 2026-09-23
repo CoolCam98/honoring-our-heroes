@@ -33,3 +33,4 @@ Plain HTML/CSS static site, deployed on Netlify (forms via Netlify Forms). Rebui
 - Check every page at 1440px, 390px, and 320px widths (mobile-friendly required).
 - Sponsors sign up by emailing Judy (judywise45@gmail.com); sponsor buttons are mailto links.
 - Domain: https://honoringourheroesfl.com. New pages via tools/new-page.py get canonical + share tags; add the page to sitemap.xml.
+- Analytics: GA4 G-077SHX76VF in every <head>; custom events in assets/js/main.js (sponsor_email, volunteer_email, email_click, phone_call, crisis_line_call, map_click, tickets_info_click, generate_lead). Never send emails/phones as event params.
