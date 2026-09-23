@@ -409,10 +409,20 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 @media (max-width: 600px) { .hero-center .btn-row .btn { width: 100%; } }
 
 /* photos */
-.photo-portrait { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: 45% 30%; }
+.photo-portrait { width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; object-position: 45% 30%; }
 .photo-portrait.speaker { aspect-ratio: auto; }
 .signoff-photo { width: 96px; height: 96px; border-radius: 50%; flex: none; border: 2px solid var(--gold-deep); }
 
 .brand img { width: 44px; height: auto; flex: none; }
 .footer-logo { width: 150px; height: auto; margin-bottom: 8px; }
 .pull-quote.small p { font-size: clamp(1.2rem, 2.2vw, 1.5rem); line-height: 1.5; }
+
+/* framed photo: soft shadow + offset gold frame */
+.photo-frame { position: relative; isolation: isolate; margin: 0 18px 18px 0; }
+.photo-frame::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 2px solid var(--gold-deep); z-index: -1; }
+.photo-frame img { position: relative; box-shadow: 0 24px 48px rgba(22, 34, 58, .28), 0 6px 14px rgba(22, 34, 58, .18); }
+.photo-frame + figcaption { margin-top: 30px; }
+
+.inline-quote { margin: 8px 0 28px; padding-left: 20px; border-left: 3px solid var(--gold-deep); }
+.inline-quote p { font: 400 1.25rem/1.45 var(--serif); color: var(--ink) !important; margin-bottom: .4rem; }
+.inline-quote figcaption { margin: 0; font-size: .95rem; color: var(--ink-soft); }
