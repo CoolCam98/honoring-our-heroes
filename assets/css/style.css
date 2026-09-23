@@ -41,7 +41,7 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); }
 h2 { font-size: clamp(2.1rem, 4.4vw, 3.4rem); }
 h3 { font-size: clamp(1.35rem, 2.2vw, 1.7rem); }
 p { margin: 0 0 1.1em; }
-em.accent, .accent { color: var(--gold); font-style: italic; }
+em.accent, .accent { color: var(--gold); font-style: normal; }
 
 .skip-link { position: absolute; left: -9999px; }
 .skip-link:focus { left: 16px; top: 16px; z-index: 100; background: var(--gold); color: var(--navy); padding: 8px 14px; }
@@ -117,6 +117,7 @@ em.accent, .accent { color: var(--gold); font-style: italic; }
 }
 .nav { display: flex; align-items: center; justify-content: space-between; min-height: var(--nav-h); gap: 24px; }
 .brand {
+  display: flex; align-items: center; gap: 12px;
   font: 600 1.15rem/1.1 var(--serif);
   letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: var(--light);
 }
@@ -408,5 +409,10 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 @media (max-width: 600px) { .hero-center .btn-row .btn { width: 100%; } }
 
 /* photos */
-.photo-portrait { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 42% 30%; }
+.photo-portrait { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: 45% 30%; }
+.photo-portrait.speaker { aspect-ratio: auto; }
 .signoff-photo { width: 96px; height: 96px; border-radius: 50%; flex: none; border: 2px solid var(--gold-deep); }
+
+.brand img { width: 44px; height: auto; flex: none; }
+.footer-logo { width: 150px; height: auto; margin-bottom: 8px; }
+.pull-quote.small p { font-size: clamp(1.2rem, 2.2vw, 1.5rem); line-height: 1.5; }

@@ -27,3 +27,7 @@ Plain HTML/CSS static site, deployed on Netlify (forms via Netlify Forms). Rebui
 - Missing links/images are marked `TODO` in comments.
 - New pages: `python3 tools/new-page.py` copies the header/footer from index.html.
 - Photos live in `assets/photos/`. Convert uploads to RGB and resize to ~1400px wide before use (originals may be CMYK/large).
+- Headings: no italics. Gold `.accent` words stay upright (italics were hard to read).
+- Logo/favicon: `assets/photos/hoh-logo.webp` (footer), `hoh-logo-sm.webp` (header), `favicon-32.png`, `apple-touch-icon.png`.
+- Batch changes and push once — each push triggers a Netlify deploy (limited credits).
+- Check every page at 1440px, 390px, and 320px widths (mobile-friendly required).
