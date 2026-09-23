@@ -128,7 +128,7 @@ em.accent, .accent { color: var(--gold); font-style: italic; }
   text-decoration: none; color: var(--light-soft); padding: 14px 14px; display: block;
 }
 .nav-menu a:hover { color: var(--gold); }
-.nav-menu a[aria-current="page"] { color: var(--gold); text-decoration: underline; text-underline-offset: 8px; }
+.nav-menu a[aria-current="page"], .has-sub:has(.submenu [aria-current="page"]) > a { color: var(--gold); text-decoration: underline; text-underline-offset: 8px; }
 .nav-menu .btn { color: #fff; margin-left: 12px; padding: 14px 22px; }
 .nav-menu .btn:hover { color: #fff; }
 .sub-toggle {
@@ -317,3 +317,11 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 .board-strip .plain-list { margin-bottom: 0; }
 .board-strip .person { padding-top: 14px; border-top-width: 1px; }
 .board-strip .person h3 { font-size: 1.3rem; }
+
+/* partner + friend cards */
+.contact-lines { font-size: 1rem; }
+.bg-cream .card a:not(.btn) { color: var(--ink); }
+.partner { text-align: center; align-items: center; }
+.partner .ph.logo { margin-bottom: 20px; }
+.partner p { margin-bottom: 0 !important; }
+.card > .btn-row { margin-top: auto; }
