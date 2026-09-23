@@ -31,3 +31,4 @@ Plain HTML/CSS static site, deployed on Netlify (forms via Netlify Forms). Rebui
 - Logo/favicon: `assets/photos/hoh-logo.webp` (footer), `hoh-logo-sm.webp` (header), `favicon-32.png`, `apple-touch-icon.png`.
 - Batch changes and push once — each push triggers a Netlify deploy (limited credits).
 - Check every page at 1440px, 390px, and 320px widths (mobile-friendly required).
+- Sponsors sign up by emailing Judy (judywise45@gmail.com); sponsor buttons are mailto links.

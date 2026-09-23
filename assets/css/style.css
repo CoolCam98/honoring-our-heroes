@@ -426,3 +426,5 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 .inline-quote { margin: 8px 0 28px; padding-left: 20px; border-left: 3px solid var(--gold-deep); }
 .inline-quote p { font: 400 1.25rem/1.45 var(--serif); color: var(--ink) !important; margin-bottom: .4rem; }
 .inline-quote figcaption { margin: 0; font-size: .95rem; color: var(--ink-soft); }
+.tier-contact { margin-top: 8px; font-size: 1.05rem; color: var(--ink) !important; }
+.tier-contact a, .bg-cream .lead a { color: var(--ink); }
