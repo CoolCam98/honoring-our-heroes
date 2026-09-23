@@ -369,3 +369,27 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 .pay-box .btn { margin-top: 20px; }
 .coming-soon { margin-top: 32px; font: italic 400 1.2rem/1.5 var(--serif); }
 .partner-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+
+/* ---------- contact form ---------- */
+.contact-grid { display: grid; gap: clamp(40px, 6vw, 80px); }
+@media (min-width: 960px) { .contact-grid { grid-template-columns: 1.6fr 1fr; } }
+.form { display: grid; gap: 22px; margin-top: 24px; }
+.field-row { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.field { display: grid; gap: 8px; }
+.field label { font-weight: 600; color: var(--ink); }
+.field .optional { font-weight: 400; color: var(--ink-soft); }
+.field input, .field select, .field textarea {
+  width: 100%; min-height: 48px; padding: 12px 14px;
+  font: 400 1.0625rem/1.5 var(--sans); color: var(--ink);
+  background: #fff; border: 1px solid #6b7385; border-radius: 2px;
+}
+.field textarea { resize: vertical; }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 1px; border-color: var(--ink); }
+.form .btn { justify-self: start; }
+.contact-aside { background: var(--navy); color: var(--light); padding: clamp(28px, 4vw, 44px); align-self: start; }
+.contact-aside h2 { font-size: 1.8rem; }
+.contact-aside dl { margin: 0; }
+.contact-aside dl > div { padding: 18px 0; border-top: 1px solid rgba(201, 165, 90, .3); }
+.contact-aside dt { font: 600 .875rem/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.contact-aside dd { margin: 0; color: var(--light-soft); }
+.contact-aside a { color: var(--gold); overflow-wrap: anywhere; }

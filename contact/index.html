@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact · Honoring Our Heroes</title>
+  <meta name="description" content="Contact Honoring Our Heroes with questions about the veterans luncheon, tickets, sponsoring, donating, or volunteering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Public+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ===== HEADER (shared — keep identical on every page, except aria-current) ===== -->
+<header class="site-header">
+  <nav class="nav wrap" aria-label="Main">
+    <a class="brand" href="/">Honoring Our Heroes<small>Plant City, Florida</small></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li class="has-sub">
+        <a href="/about/">About</a>
+        <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Show About pages"></button>
+        <ul class="submenu">
+          <li><a href="/about/">Our Story &amp; Board</a></li>
+          <li><a href="/about/friends/">Friends of HOH</a></li>
+          <li><a href="/about/partners/">Partners</a></li>
+        </ul>
+      </li>
+      <li><a href="/events/">Event</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/contact/" aria-current="page">Contact</a></li>
+      <li class="has-sub btn-sub">
+        <a class="btn btn-red" href="/support/">Support Us</a>
+        <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Show ways to support"></button>
+        <ul class="submenu">
+          <li><a href="/support/sponsor/">Become a Sponsor</a></li>
+          <li><a href="/support/donate/">Donate</a></li>
+          <li><a href="/support/volunteer/">Volunteer</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-hero bg-navy" aria-labelledby="page-title">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h1 id="page-title">Get in <em class="accent">touch</em>.</h1>
+      <p>Questions about the luncheon, tickets, sponsoring, donating, or volunteering? Send us a message and we'll get back to you.</p>
+    </div>
+  </section>
+
+  <section class="section bg-cream" aria-labelledby="form-title">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 id="form-title">Send a <em class="accent">message</em>.</h2>
+        <p>Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+        <form class="form" name="contact" method="POST" action="/contact/thanks/" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="visually-hidden"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Your name <span aria-hidden="true">*</span></label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email address <span aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="topic">What is this about? <span aria-hidden="true">*</span></label>
+              <select id="topic" name="topic" required>
+                <option value="">Choose a topic</option>
+                <option>Attending the luncheon / tickets</option>
+                <option>Becoming a sponsor</option>
+                <option>Making a donation</option>
+                <option>Volunteering</option>
+                <option>Something else</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          <button class="btn btn-red btn-lg" type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <aside class="contact-aside" aria-labelledby="quick-title">
+        <h2 id="quick-title">Quick answers</h2>
+        <dl>
+          <div>
+            <dt>Getting tickets</dt>
+            <dd>Tickets are picked up in person starting September 14. <a href="/events/#tickets">See ticket locations</a></dd>
+          </div>
+          <div>
+            <dt>Volunteering</dt>
+            <dd>Email Sherry Scheitler, Volunteer Coordinator, at <a href="mailto:sherryscheitler@gmail.com">sherryscheitler@gmail.com</a></dd>
+          </div>
+          <div>
+            <dt>Donations</dt>
+            <dd>Cash or check only, payable to Honoring Our Heroes with "Veterans Event" on the memo line. <a href="/support/donate/">How to give</a></dd>
+          </div>
+          <div>
+            <dt>The event</dt>
+            <dd>Sunday, November 1, 2026 · Doors 12 PM<br>Trinkle Center, 1206 N Park Rd, Plant City, FL</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER (shared — keep identical on every page) ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <!-- TODO: replace with <img src="/assets/img/hoh-logo.png" alt="Honoring Our Heroes"> -->
+      <div class="ph logo" role="img" aria-label="Honoring Our Heroes logo">Logo</div>
+      <p class="eyebrow">Presented by</p>
+      <p><strong>Judy &amp; Ed Wise</strong>Generous sponsors &amp; faithful volunteers</p>
+    </div>
+    <div class="crisis">
+      <p class="eyebrow">Veterans Crisis Line — You are not alone</p>
+      <a class="phone" href="tel:18002738255">1-800-273-8255</a>
+      <p>Available 24/7 · or dial <a href="tel:988">988</a>, then press 1</p>
+    </div>
+    <p class="legal">
+      <span>© 2026 Honoring Our Heroes · Plant City, Florida</span>
+      <span>Website by <a href="https://www.premiummediafl.com/">Premium Media</a></span>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
