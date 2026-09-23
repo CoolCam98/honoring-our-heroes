@@ -393,3 +393,16 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 .contact-aside dt { font: 600 .875rem/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
 .contact-aside dd { margin: 0; color: var(--light-soft); }
 .contact-aside a { color: var(--gold); overflow-wrap: anywhere; }
+
+/* centered home hero */
+.hero-center { text-align: center; }
+.hero-center .lead { margin-inline: auto; max-width: 680px; }
+.hero-center .btn-row { justify-content: center; }
+.hero-center h1 { font-size: clamp(3rem, 8vw, 6rem); }
+.hero-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); margin: clamp(48px, 6vw, 72px) 0 0; border-top: 1px solid rgba(201, 165, 90, .3); }
+.hero-facts > div { padding: 28px 20px 0; }
+.hero-facts > div + div { border-left: 1px solid rgba(201, 165, 90, .3); }
+@media (max-width: 800px) { .hero-facts > div + div { border-left: 0; border-top: 1px solid rgba(201, 165, 90, .3); padding-bottom: 0; } .hero-facts > div { padding-bottom: 20px; } }
+.hero-facts dt { font: 600 .875rem/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.hero-facts dd { margin: 0; color: var(--light); font-size: 1.05rem; }
+@media (max-width: 600px) { .hero-center .btn-row .btn { width: 100%; } }
