@@ -338,3 +338,24 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 .locations a { color: var(--gold); margin-top: 6px; }
 .bg-navy .notice { color: var(--light); background: rgba(185, 70, 59, .18); }
 .keynote { align-items: start; }
+
+/* ---------- support ---------- */
+.nav-menu .btn[aria-current="page"], .btn-sub:has(.submenu [aria-current="page"]) > .btn { color: #fff; text-decoration: underline; text-underline-offset: 6px; }
+.page-hero .btn-row { margin-top: 28px; }
+.page-hero .contact-lines { margin-top: 16px; font-size: 1rem; }
+.page-hero .contact-lines a { color: var(--gold); }
+.tiers { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+.tier { display: flex; flex-direction: column; border: 1px solid rgba(22, 34, 58, .18); background: rgba(255, 255, 255, .35); padding: 28px 24px; }
+.tier h3 { font: 600 .95rem/1.4 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--gold-deep); }
+.tier .price { font: 500 2rem/1.15 var(--serif); color: var(--ink); margin-bottom: 1.5rem; }
+.tier .price span { display: block; font: 400 1rem/1.5 var(--sans); color: var(--ink-soft); margin-top: 4px; }
+.tier .btn { margin-top: auto; }
+.tier-top { background: var(--navy); border-color: var(--navy); }
+.tier-top h3 { color: var(--gold); }
+.tier-top .price { color: var(--light); }
+.tier-note { margin-top: 32px; font: italic 400 1.25rem/1.5 var(--serif); color: var(--ink) !important; }
+.check-list { list-style: none; margin: 0; padding: 0; }
+.check-list li { padding: 14px 0 14px 36px; border-bottom: 1px solid rgba(201, 165, 90, .3); position: relative; font: 400 1.2rem/1.4 var(--serif); }
+.check-list li::before { content: "✓"; position: absolute; left: 4px; color: var(--gold); font-family: var(--sans); }
+.bg-cream .check-list li { border-color: rgba(22, 34, 58, .15); }
+.bg-cream .check-list li::before { color: var(--gold-deep); }
