@@ -406,3 +406,7 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 .hero-facts dt { font: 600 .875rem/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
 .hero-facts dd { margin: 0; color: var(--light); font-size: 1.05rem; }
 @media (max-width: 600px) { .hero-center .btn-row .btn { width: 100%; } }
+
+/* photos */
+.photo-portrait { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 42% 30%; }
+.signoff-photo { width: 96px; height: 96px; border-radius: 50%; flex: none; border: 2px solid var(--gold-deep); }
