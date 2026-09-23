@@ -309,3 +309,11 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 .signoff .closing { font-size: 1.125rem; color: var(--ink-soft); }
 .signoff .signature { font: 400 2.6rem/1.1 "Great Vibes", cursive; color: var(--ink); margin: .1em 0; }
 .signoff .title { font-size: 1rem; color: var(--ink-soft); }
+
+/* compact board strip */
+.section-tight { padding-block: clamp(40px, 5vw, 64px); border-top: 1px solid rgba(22, 34, 58, .12); }
+.board-strip h2 { font-size: clamp(1.6rem, 2.6vw, 2rem); margin-bottom: .3rem; }
+.board-strip .board-note { font-size: 1rem; margin-bottom: 28px; }
+.board-strip .plain-list { margin-bottom: 0; }
+.board-strip .person { padding-top: 14px; border-top-width: 1px; }
+.board-strip .person h3 { font-size: 1.3rem; }
