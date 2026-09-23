@@ -6,6 +6,7 @@ Plain HTML/CSS static site, deployed on Netlify (forms via Netlify Forms). Rebui
 - Advertise the annual luncheon. Make it obvious how a veteran attends (tickets are free, picked up in person — no online sign-up) and how a sponsor gives.
 - Home page must explain the organization and event within ~10 seconds.
 - Tickets: free for veterans + 1 guest; $20 for anyone else (sold at the same pickup locations). Picked up in person starting Sept 14; none at the door.
+- $20 is the non-veteran ticket price, not a sponsorship. Don't use "sponsor a seat for $20". Sponsor tiers start at $100 (Friend = any amount).
 - Welcome Home Vietnam Veterans (Mar 29) is not being promoted — leave it off the site for now.
 - Event is hosted in Plant City but open to all veterans — don't say "Plant City's veterans".
 
