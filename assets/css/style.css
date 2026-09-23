@@ -359,3 +359,13 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 .check-list li::before { content: "✓"; position: absolute; left: 4px; color: var(--gold); font-family: var(--sans); }
 .bg-cream .check-list li { border-color: rgba(22, 34, 58, .15); }
 .bg-cream .check-list li::before { color: var(--gold-deep); }
+
+.prize { margin-top: 40px; border: 2px solid var(--gold); padding: clamp(24px, 4vw, 40px); }
+.prize h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.prize p:last-child, .pay-box p:last-of-type { margin-bottom: 0; }
+.other-event { max-width: 760px; }
+.pay-box { margin-top: clamp(28px, 4vw, 40px); border-left: 4px solid var(--gold-deep); background: rgba(255, 255, 255, .45); padding: clamp(24px, 4vw, 36px); }
+.pay-box p { color: var(--ink) !important; }
+.pay-box .btn { margin-top: 20px; }
+.coming-soon { margin-top: 32px; font: italic 400 1.2rem/1.5 var(--serif); }
+.partner-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
