@@ -428,3 +428,4 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 .inline-quote figcaption { margin: 0; font-size: .95rem; color: var(--ink-soft); }
 .tier-contact { margin-top: 8px; font-size: 1.05rem; color: var(--ink) !important; }
 .tier-contact a, .bg-cream .lead a { color: var(--ink); }
+.partner-logo { width: 150px; height: 150px; object-fit: contain; background: #fff; padding: 14px; margin: 0 auto 20px; border: 1px solid rgba(22, 34, 58, .1); }
