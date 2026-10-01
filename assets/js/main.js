@@ -61,3 +61,52 @@
     });
   }
 })();
+
+// Photo gallery lightbox (links open the full photo if JS is off)
+(function () {
+  var box = document.querySelector('.lightbox');
+  if (!box || typeof box.showModal !== 'function') return;
+  var links = Array.prototype.slice.call(document.querySelectorAll('.gallery-grid a'));
+  var img = box.querySelector('img');
+  var count = box.querySelector('.lb-count');
+  var current = 0, opener = null, touchX = null;
+
+  function show(i) {
+    current = (i + links.length) % links.length;
+    var a = links[current], thumb = a.querySelector('img');
+    img.src = a.getAttribute('href');
+    img.alt = thumb.alt;
+    img.width = +a.dataset.w; img.height = +a.dataset.h;
+    count.textContent = (current + 1) + ' of ' + links.length;
+    [-1, 1].forEach(function (d) { new Image().src = links[(current + d + links.length) % links.length].getAttribute('href'); });
+  }
+
+  links.forEach(function (a, i) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      opener = a;
+      show(i);
+      box.showModal();
+    });
+  });
+
+  box.querySelector('.lb-prev').addEventListener('click', function () { show(current - 1); });
+  box.querySelector('.lb-next').addEventListener('click', function () { show(current + 1); });
+  box.querySelector('.lb-close').addEventListener('click', function () { box.close(); });
+  box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
+  box.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
+  box.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+    touchX = null;
+  });
+  box.addEventListener('close', function () {
+    img.removeAttribute('src');
+    if (opener) opener.focus();
+  });
+})();
