@@ -68,7 +68,6 @@
   if (!box || typeof box.showModal !== 'function') return;
   var links = Array.prototype.slice.call(document.querySelectorAll('.gallery-grid a'));
   var img = box.querySelector('img');
-  var caption = box.querySelector('.lb-caption');
   var count = box.querySelector('.lb-count');
   var current = 0, opener = null, touchX = null;
 
@@ -78,7 +77,6 @@
     img.src = a.getAttribute('href');
     img.alt = thumb.alt;
     img.width = +a.dataset.w; img.height = +a.dataset.h;
-    caption.textContent = thumb.alt;
     count.textContent = (current + 1) + ' of ' + links.length;
     [-1, 1].forEach(function (d) { new Image().src = links[(current + d + links.length) % links.length].getAttribute('href'); });
   }
