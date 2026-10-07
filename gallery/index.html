@@ -415,7 +415,15 @@
       <button class="ss-btn ss-prev" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 4 7 12l8.5 8 1.5-1.5L10 12l7-6.5z"/></svg><span>Back</span></button>
       <button class="ss-btn ss-pause" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg><span>Pause</span></button>
       <button class="ss-btn ss-next" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4 17 12l-8.5 8L7 18.5 14 12 7 5.5z"/></svg><span>Next</span></button>
-      <button class="ss-btn ss-speed" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 2a7 7 0 1 1 0 14 7 7 0 0 1 0-14zm-1 2v5.4l4.3 2.6 1-1.7-3.3-2V8z"/></svg><span>Speed: Normal</span></button>
+      <div class="ss-speed">
+        <label for="ss-speed-range">Speed</label>
+        <div class="ss-speed-row">
+          <span aria-hidden="true">Slower</span>
+          <input id="ss-speed-range" type="range" min="0" max="9" step="1" value="5" aria-valuetext="7 seconds per photo">
+          <span aria-hidden="true">Faster</span>
+        </div>
+        <output for="ss-speed-range" class="ss-speed-value">7 seconds per photo</output>
+      </div>
       <span class="ss-count" aria-hidden="true"></span>
       <button class="ss-btn ss-exit" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 5 5 6.4l5.6 5.6L5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4 17.6 5 12 10.6z"/></svg><span>Exit</span></button>
     </div>

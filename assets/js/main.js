@@ -119,14 +119,16 @@
 
   var layers = show.querySelectorAll('.ss-img');
   var pauseBtn = show.querySelector('.ss-pause');
-  var speedBtn = show.querySelector('.ss-speed');
+  var speedRange = show.querySelector('#ss-speed-range');
+  var speedValue = show.querySelector('.ss-speed-value');
   var count = show.querySelector('.ss-count');
   var status = show.querySelector('.ss-status');
-  var speeds = [{ name: 'Slow', ms: 12000 }, { name: 'Normal', ms: 7000 }, { name: 'Fast', ms: 4000 }];
-  var speed = 1, list = [], current = 0, front = 0, token = 0;
+  // Seconds each photo stays up; the slider runs from slowest (left) to fastest (right)
+  var speeds = [20, 15, 12, 10, 8, 7, 6, 5, 4, 3];
+  var speed = 5, list = [], current = 0, front = 0, token = 0;
   var paused = false, timer = null, hideTimer = null, hintTimer = null, wakeLock = null, fullscreen = false;
 
-  try { var saved = localStorage.getItem('hoh-slideshow-speed'); if (saved !== null && speeds[+saved]) speed = +saved; } catch (e) {}
+  try { var saved = localStorage.getItem('hoh-slideshow-pace'); if (saved !== null && speeds[+saved]) speed = +saved; } catch (e) {}
 
   function photos(set) {
     var sel = set === 'all' ? '[data-set] .gallery-grid a' : '[data-set="' + set + '"] .gallery-grid a';
@@ -141,7 +143,7 @@
 
   function schedule() {
     clearTimeout(timer);
-    if (!paused) timer = setTimeout(function () { go(current + 1); }, speeds[speed].ms);
+    if (!paused) timer = setTimeout(function () { go(current + 1); }, speeds[speed] * 1000);
   }
 
   function go(n) {
@@ -173,8 +175,11 @@
 
   function setSpeed(s) {
     speed = s;
-    speedBtn.querySelector('span').textContent = 'Speed: ' + speeds[s].name;
-    try { localStorage.setItem('hoh-slideshow-speed', s); } catch (e) {}
+    var text = speeds[s] + ' seconds per photo';
+    speedRange.value = s;
+    speedRange.setAttribute('aria-valuetext', text);
+    speedValue.textContent = text;
+    try { localStorage.setItem('hoh-slideshow-pace', s); } catch (e) {}
     schedule();
   }
 
@@ -236,12 +241,13 @@
   show.querySelector('.ss-prev').addEventListener('click', function () { go(current - 1); });
   show.querySelector('.ss-next').addEventListener('click', function () { go(current + 1); });
   pauseBtn.addEventListener('click', function () { setPaused(!paused); });
-  speedBtn.addEventListener('click', function () { setSpeed((speed + 1) % speeds.length); });
+  speedRange.addEventListener('input', function () { setSpeed(+speedRange.value); wake(); });
   show.querySelector('.ss-exit').addEventListener('click', function () { show.close(); });
 
   // Keyboard and presentation clickers (which send Page Up / Page Down)
   show.addEventListener('keydown', function (e) {
     var k = e.key;
+    if (e.target === speedRange && k !== ' ' && k !== 'Spacebar' && k !== 'k') return; // let arrows move the slider
     if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown') { e.preventDefault(); go(current + 1); }
     else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); go(current - 1); }
     else if (k === ' ' || k === 'Spacebar' || k === 'k') { e.preventDefault(); setPaused(!paused); }
