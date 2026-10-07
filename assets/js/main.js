@@ -110,3 +110,153 @@
     if (opener) opener.focus();
   });
 })();
+
+// Gallery slideshow: full-screen, auto-advancing, for playing behind a presentation
+(function () {
+  var chooser = document.querySelector('.ss-chooser');
+  var show = document.querySelector('.slideshow');
+  if (!chooser || !show || typeof show.showModal !== 'function') return;
+
+  var layers = show.querySelectorAll('.ss-img');
+  var pauseBtn = show.querySelector('.ss-pause');
+  var speedBtn = show.querySelector('.ss-speed');
+  var count = show.querySelector('.ss-count');
+  var status = show.querySelector('.ss-status');
+  var speeds = [{ name: 'Slow', ms: 12000 }, { name: 'Normal', ms: 7000 }, { name: 'Fast', ms: 4000 }];
+  var speed = 1, list = [], current = 0, front = 0, token = 0;
+  var paused = false, timer = null, hideTimer = null, hintTimer = null, wakeLock = null, fullscreen = false;
+
+  try { var saved = localStorage.getItem('hoh-slideshow-speed'); if (saved !== null && speeds[+saved]) speed = +saved; } catch (e) {}
+
+  function photos(set) {
+    var sel = set === 'all' ? '[data-set] .gallery-grid a' : '[data-set="' + set + '"] .gallery-grid a';
+    return Array.prototype.map.call(document.querySelectorAll(sel), function (a) {
+      return { src: a.getAttribute('href'), alt: a.querySelector('img').alt };
+    });
+  }
+
+  chooser.querySelectorAll('[data-count]').forEach(function (el) {
+    el.textContent = photos(el.getAttribute('data-count')).length + ' photos';
+  });
+
+  function schedule() {
+    clearTimeout(timer);
+    if (!paused) timer = setTimeout(function () { go(current + 1); }, speeds[speed].ms);
+  }
+
+  function go(n) {
+    current = (n + list.length) % list.length;
+    var t = ++token, photo = list[current], next = new Image();
+    next.src = photo.src;
+    (next.decode ? next.decode() : Promise.resolve()).catch(function () {}).then(function () {
+      if (t !== token) return;
+      var back = layers[1 - front];
+      back.src = photo.src;
+      back.alt = photo.alt;
+      back.classList.add('is-on');
+      layers[front].classList.remove('is-on');
+      front = 1 - front;
+      count.textContent = (current + 1) + ' of ' + list.length;
+      new Image().src = list[(current + 1) % list.length].src;
+      schedule();
+    });
+  }
+
+  function setPaused(p) {
+    paused = p;
+    show.classList.toggle('ss-is-paused', p);
+    pauseBtn.querySelector('span').textContent = p ? 'Play' : 'Pause';
+    pauseBtn.querySelector('path').setAttribute('d', p ? 'M7 4.5v15l13-7.5z' : 'M6 4h4v16H6zM14 4h4v16h-4z');
+    status.textContent = p ? 'Slideshow paused' : 'Slideshow playing';
+    if (p) clearTimeout(timer); else schedule();
+  }
+
+  function setSpeed(s) {
+    speed = s;
+    speedBtn.querySelector('span').textContent = 'Speed: ' + speeds[s].name;
+    try { localStorage.setItem('hoh-slideshow-speed', s); } catch (e) {}
+    schedule();
+  }
+
+  // Controls appear when the mouse moves or the screen is touched, then hide again
+  function wake() {
+    show.classList.add('ss-active');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function () {
+      if (show.querySelector('.ss-controls:hover')) return wake();
+      show.classList.remove('ss-active');
+    }, 3500);
+  }
+
+  function keepAwake() {
+    if (!('wakeLock' in navigator) || !show.open) return;
+    navigator.wakeLock.request('screen').then(function (l) { wakeLock = l; }).catch(function () {});
+  }
+
+  function start(set) {
+    list = photos(set);
+    if (!list.length) return;
+    show.showModal();
+    var root = document.documentElement;
+    if (root.requestFullscreen) {
+      root.requestFullscreen().then(function () { fullscreen = true; }).catch(function () {});
+    }
+    keepAwake();
+    setSpeed(speed);
+    setPaused(false);
+    show.classList.add('ss-hinting');
+    clearTimeout(hintTimer);
+    hintTimer = setTimeout(function () { show.classList.remove('ss-hinting'); }, 6000);
+    wake();
+    clearTimeout(timer);
+    go(0);
+    if (typeof window.gtag === 'function') window.gtag('event', 'slideshow_start', { photo_set: set });
+  }
+
+  show.addEventListener('close', function () {
+    token++;
+    clearTimeout(timer); clearTimeout(hideTimer); clearTimeout(hintTimer);
+    layers.forEach(function (l) { l.classList.remove('is-on'); l.removeAttribute('src'); });
+    show.classList.remove('ss-active', 'ss-hinting', 'ss-is-paused');
+    if (wakeLock) { wakeLock.release().catch(function () {}); wakeLock = null; }
+    if (fullscreen && document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
+    fullscreen = false;
+  });
+
+  // Leaving full screen (e.g. pressing Esc) ends the slideshow
+  document.addEventListener('fullscreenchange', function () {
+    if (!document.fullscreenElement && fullscreen && show.open) { fullscreen = false; show.close(); }
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible' && show.open) keepAwake();
+  });
+
+  show.addEventListener('mousemove', wake);
+  show.addEventListener('pointerdown', wake);
+  show.querySelector('.ss-prev').addEventListener('click', function () { go(current - 1); });
+  show.querySelector('.ss-next').addEventListener('click', function () { go(current + 1); });
+  pauseBtn.addEventListener('click', function () { setPaused(!paused); });
+  speedBtn.addEventListener('click', function () { setSpeed((speed + 1) % speeds.length); });
+  show.querySelector('.ss-exit').addEventListener('click', function () { show.close(); });
+
+  // Keyboard and presentation clickers (which send Page Up / Page Down)
+  show.addEventListener('keydown', function (e) {
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown') { e.preventDefault(); go(current + 1); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); go(current - 1); }
+    else if (k === ' ' || k === 'Spacebar' || k === 'k') { e.preventDefault(); setPaused(!paused); }
+  });
+
+  function openChooser() { chooser.showModal(); }
+  document.querySelectorAll('.ss-open').forEach(function (b) { b.addEventListener('click', openChooser); });
+  document.querySelectorAll('.ss-play').forEach(function (b) {
+    b.addEventListener('click', function () { start(b.getAttribute('data-set')); });
+  });
+  chooser.querySelectorAll('.ss-choice').forEach(function (b) {
+    b.addEventListener('click', function () { chooser.close(); start(b.getAttribute('data-set')); });
+  });
+  chooser.querySelector('.ss-cancel').addEventListener('click', function () { chooser.close(); });
+
+  // A bookmark to /gallery/#slideshow opens the photo choice straight away
+  if (location.hash === '#slideshow') openChooser();
+})();

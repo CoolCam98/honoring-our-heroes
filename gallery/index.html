@@ -75,19 +75,20 @@
     <div class="narrow">
       <p class="eyebrow">Gallery</p>
       <h1 id="page-title">Moments worth <span class="accent">remembering</span>.</h1>
-      <p>The ceremonies, the quilts, the color guards, and the faces behind them. Tap any photo to see it larger.</p>
+      <p>The ceremonies, the quilts, the color guards, and the faces behind them. Tap any photo to see it larger, or play them as a full-screen slideshow.</p>
       <div class="btn-row">
-        <a class="btn btn-red btn-lg" href="/events/">See This Year's Event</a>
-        <a class="btn btn-outline btn-lg" href="/about/">Read Our Story</a>
+        <button class="btn btn-red btn-lg ss-open" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg> Play Slideshow</button>
+        <a class="btn btn-outline btn-lg" href="/events/">See This Year's Event</a>
       </div>
     </div>
   </section>
 
-  <section class="section bg-navy" aria-labelledby="photos-title">
+  <section class="section bg-navy" aria-labelledby="photos-title" data-set="gallery">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Through the years</p>
         <h2 id="photos-title">Our <span class="accent">gallery</span>.</h2>
+        <button class="btn btn-outline ss-play" type="button" data-set="gallery"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg> Play these photos</button>
       </div>
       <ul class="gallery-grid">
         <li><a href="/assets/photos/gallery/002.webp" data-w="1400" data-h="1089"><img src="/assets/photos/gallery/thumbs/002.webp" width="480" height="373" loading="lazy" decoding="async" alt="A speaker addresses the luncheon from the podium beside the American flag"></a></li>
@@ -285,12 +286,13 @@
     </div>
   </section>
 
-  <section class="section bg-navy" aria-labelledby="vietnam-2026-title">
+  <section class="section bg-navy" aria-labelledby="vietnam-2026-title" data-set="vietnam">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">2026</p>
         <h2 id="vietnam-2026-title">Vietnam War <span class="accent">Veterans Day</span>.</h2>
         <p>The color guard, guest speakers, and Quilts of Valor presented to Vietnam veterans at our 2026 ceremony.</p>
+        <button class="btn btn-outline ss-play" type="button" data-set="vietnam"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg> Play these photos</button>
       </div>
       <ul class="gallery-grid">
         <li><a href="/assets/photos/vietnam-veterans-2026/001.webp" data-w="787" data-h="1400"><img src="/assets/photos/vietnam-veterans-2026/thumbs/001.webp" width="480" height="853" loading="lazy" decoding="async" alt="A Navy veteran in dress whites stands with an Army sergeant major in dress uniform"></a></li>
@@ -378,6 +380,46 @@
     <button class="lb-btn lb-prev" type="button" aria-label="Previous photo">&#8249;</button>
     <button class="lb-btn lb-next" type="button" aria-label="Next photo">&#8250;</button>
     <button class="lb-btn lb-close" type="button" autofocus aria-label="Close photo viewer">&#215;</button>
+  </dialog>
+
+  <dialog class="ss-chooser" aria-labelledby="ss-chooser-title">
+    <h2 id="ss-chooser-title">Which photos should play?</h2>
+    <div class="ss-choices">
+      <button class="ss-choice" type="button" data-set="vietnam">
+        <img src="/assets/photos/vietnam-veterans-2026/thumbs/014.webp" width="480" height="270" alt="">
+        <span class="ss-choice-body">
+          <span class="ss-choice-title">Vietnam War Veterans Day 2026</span>
+          <span class="ss-choice-count" data-count="vietnam">73 photos</span>
+          <span class="ss-choice-go"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg> Play</span>
+        </span>
+      </button>
+      <button class="ss-choice" type="button" data-set="all">
+        <img src="/assets/photos/gallery/thumbs/009.webp" width="480" height="360" alt="">
+        <span class="ss-choice-body">
+          <span class="ss-choice-title">All photos</span>
+          <span class="ss-choice-count" data-count="all">264 photos</span>
+          <span class="ss-choice-go"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg> Play</span>
+        </span>
+      </button>
+    </div>
+    <p class="ss-tip">The photos fill the screen and change on their own. Move the mouse to see the controls. Press <kbd>Esc</kbd> to stop.</p>
+    <button class="btn btn-outline ss-cancel" type="button">Cancel</button>
+  </dialog>
+
+  <dialog class="slideshow" aria-label="Photo slideshow">
+    <img class="ss-img" alt="">
+    <img class="ss-img" alt="">
+    <p class="ss-hint">Move the mouse to see the controls &middot; Press <kbd>Esc</kbd> to stop</p>
+    <p class="ss-paused"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg> Paused</p>
+    <div class="ss-controls" role="group" aria-label="Slideshow controls">
+      <button class="ss-btn ss-prev" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 4 7 12l8.5 8 1.5-1.5L10 12l7-6.5z"/></svg><span>Back</span></button>
+      <button class="ss-btn ss-pause" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg><span>Pause</span></button>
+      <button class="ss-btn ss-next" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4 17 12l-8.5 8L7 18.5 14 12 7 5.5z"/></svg><span>Next</span></button>
+      <button class="ss-btn ss-speed" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 2a7 7 0 1 1 0 14 7 7 0 0 1 0-14zm-1 2v5.4l4.3 2.6 1-1.7-3.3-2V8z"/></svg><span>Speed: Normal</span></button>
+      <span class="ss-count" aria-hidden="true"></span>
+      <button class="ss-btn ss-exit" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 5 5 6.4l5.6 5.6L5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4 17.6 5 12 10.6z"/></svg><span>Exit</span></button>
+    </div>
+    <p class="ss-status visually-hidden" aria-live="polite"></p>
   </dialog>
 
 </main>
