@@ -300,6 +300,20 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 /* ---------- long-form text ---------- */
 .prose p { font-size: 1.125rem; }
 .prose h2 { margin-bottom: .6em; }
+.story-portrait { float: right; width: 150px; margin: .35rem 0 1rem 1.75rem; text-align: center; }
+.story-portrait img {
+  width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  border-radius: 999px 999px 4px 4px; border: 2px solid var(--gold-deep);
+  outline: 1px solid rgba(122, 92, 30, .35); outline-offset: 5px;
+}
+.story-portrait figcaption { margin-top: 12px; font: 500 .875rem/1.35 var(--sans); color: var(--ink-soft); }
+@media (max-width: 480px) { .story-portrait { float: none; width: 140px; margin: .5rem auto 1.5rem; } }
+.letter .signoff { clear: both; }
+.memorial-photo {
+  width: min(220px, 60vw); height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  margin: 0 auto 32px; border-radius: 999px 999px 6px 6px;
+  border: 3px solid var(--gold); outline: 1px solid var(--gold-soft); outline-offset: 8px;
+}
 .memorial .dates { font: italic 400 1.35rem/1.4 var(--serif); color: var(--gold); margin-bottom: 1.5rem; }
 
 /* ---------- letter (Judy's story) ---------- */
