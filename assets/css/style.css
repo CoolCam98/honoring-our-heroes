@@ -300,6 +300,11 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 /* ---------- long-form text ---------- */
 .prose p { font-size: 1.125rem; }
 .prose h2 { margin-bottom: .6em; }
+.memorial-photo {
+  width: min(220px, 60vw); height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  margin: 0 auto 32px; border-radius: 999px 999px 6px 6px;
+  border: 3px solid var(--gold); outline: 1px solid var(--gold-soft); outline-offset: 8px;
+}
 .memorial .dates { font: italic 400 1.35rem/1.4 var(--serif); color: var(--gold); margin-bottom: 1.5rem; }
 
 /* ---------- letter (Judy's story) ---------- */
