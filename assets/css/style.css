@@ -152,7 +152,7 @@ em.accent, .accent { color: var(--gold); font-style: normal; }
 .nav-menu .has-sub.btn-sub > .submenu { left: auto; right: 0; }
 .menu-toggle { display: none; }
 
-@media (max-width: 960px) {
+@media (max-width: 1199px) {
   .menu-toggle {
     display: inline-flex; align-items: center; gap: 10px;
     background: none; border: 1px solid var(--gold-soft); color: var(--light);

@@ -48,6 +48,8 @@
       track(/8255|988/.test(href) ? 'crisis_line_call' : 'phone_call', { link_text: label });
     } else if (/google\.com\/maps/.test(href)) {
       track('map_click', { link_text: label });
+    } else if (/square\.site|squareup\.com/.test(href)) {
+      track('shop_click', { link_text: label });
     } else if (href === '/events/#tickets' || href === '#attend' || href === '#tickets') {
       track('tickets_info_click', { link_text: label });
     }
