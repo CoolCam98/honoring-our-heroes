@@ -520,19 +520,19 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 kbd { font: 600 .9em/1 var(--sans); padding: .15em .45em; border: 1px solid var(--gold-soft); border-radius: 4px; }
 
 .ss-chooser {
-  width: min(100% - 32px, 760px); max-height: calc(100vh - 32px); overflow: auto;
+  width: min(100% - 32px, 1000px); max-height: calc(100vh - 32px); overflow: auto;
   margin: auto; padding: clamp(24px, 4vw, 40px);
   background: var(--navy); color: var(--light); border: 1px solid var(--gold-soft);
 }
 .ss-chooser::backdrop { background: rgba(8, 14, 26, .85); }
 .ss-chooser h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); }
-.ss-choices { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); margin-bottom: 20px; }
+.ss-choices { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); margin-bottom: 20px; }
 .ss-choice {
   display: flex; flex-direction: column; padding: 0; overflow: hidden; cursor: pointer;
   text-align: left; font: inherit; color: var(--light); background: var(--navy-2);
   border: 2px solid var(--gold-soft); transition: border-color .2s, transform .2s;
 }
-.ss-choice img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.ss-choice img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
 .ss-choice-body { display: grid; gap: 4px; padding: 16px 18px 20px; }
 .ss-choice-title { font: 500 1.35rem/1.2 var(--serif); }
 .ss-choice-count { color: var(--light-soft); font-size: .9375rem; }
@@ -543,6 +543,13 @@ kbd { font: 600 .9em/1 var(--sans); padding: .15em .45em; border: 1px solid var(
 }
 .ss-choice:hover, .ss-choice:focus-visible { border-color: var(--gold); transform: translateY(-3px); }
 .ss-choice:hover .ss-choice-go { background: var(--red-dark); }
+/* phones: compact side-by-side cards so all the sets fit without much scrolling */
+@media (max-width: 600px) {
+  .ss-choice { display: grid; grid-template-columns: 38% 1fr; align-items: stretch; }
+  .ss-choice img { height: 100%; aspect-ratio: auto; }
+  .ss-choice-body { padding: 12px 14px 14px; }
+  .ss-choice-title { font-size: 1.1rem; }
+}
 .ss-tip { color: var(--light-soft); }
 
 .slideshow {
