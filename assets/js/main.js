@@ -269,14 +269,13 @@
   if (location.hash === '#slideshow') openChooser();
 })();
 
-// Home hero background video: muted YouTube loop on wide screens; thumbnail otherwise
+// Home hero background video: muted YouTube loop; thumbnail with reduced motion or Save-Data
 (function () {
   var hero = document.querySelector('.hero-video[data-video-id]');
   if (!hero) return;
-  var wide = window.matchMedia('(min-width: 900px)');
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
   var saveData = navigator.connection && navigator.connection.saveData;
-  if (!wide.matches || calm.matches || saveData) return;
+  if (calm.matches || saveData) return;
 
   var id = hero.getAttribute('data-video-id');
   var media = hero.querySelector('.hero-media');
@@ -291,9 +290,9 @@
   frame.setAttribute('allow', 'autoplay; encrypted-media');
   frame.setAttribute('loading', 'lazy');
 
-  // Size the 16:9 player to cover the hero; oversize a little to crop YouTube's edge overlays
+  // Size the 16:9 player to cover the photo area (whole hero on desktop, top band on phones); oversize a little to crop YouTube's edge overlays
   function fit() {
-    var w = hero.clientWidth, h = hero.clientHeight, s = 1.2;
+    var w = media.clientWidth, h = media.clientHeight, s = 1.2;
     if (w / h > 16 / 9) { h = w * 9 / 16; } else { w = h * 16 / 9; }
     frame.style.width = Math.ceil(w * s) + 'px';
     frame.style.height = Math.ceil(h * s) + 'px';
