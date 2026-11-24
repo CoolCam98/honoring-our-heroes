@@ -35,4 +35,5 @@ Plain HTML/CSS static site, deployed on Netlify (forms via Netlify Forms). Rebui
 - Domain: https://honoringourheroesfl.com. New pages via tools/new-page.py get canonical + share tags; add the page to sitemap.xml.
 - Analytics: GA4 G-077SHX76VF in every <head>; custom events in assets/js/main.js (sponsor_email, volunteer_email, email_click, phone_call, crisis_line_call, map_click, tickets_info_click, generate_lead, slideshow_start, shop_click). Never send emails/phones as event params.
 - SEO: titles ≤60 chars, descriptions ≤155 with 'veterans luncheon' + 'Plant City, FL'; inner pages carry BreadcrumbList JSON-LD (add one for new pages); update sitemap.xml lastmod when content changes.
+- Home hero background: muted YouTube loop (id in `data-video-id` on `.hero-video`), loaded by main.js on screens ≥900px only (not with reduced motion or Save-Data); `assets/photos/hero-video-poster*.webp` is the thumbnail fallback. Keep the navy tint (.84) for text contrast and the pause button.
 - Event schema endDate is an estimate (3:00 PM); update if the real end time is known.

@@ -75,7 +75,11 @@
 <main id="main">
 
   <!-- Hero: what it is, who it's for, when/where, what to do -->
-  <section class="hero bg-navy" aria-labelledby="hero-title">
+  <section class="hero hero-video bg-navy" aria-labelledby="hero-title" data-video-id="-0thW-WTf98">
+    <!-- Background video: YouTube -0thW-WTf98 (muted loop, wide screens only). The thumbnail shows on phones, with reduced motion, and while the video loads. -->
+    <div class="hero-media">
+      <img src="/assets/photos/hero-video-poster.webp" srcset="/assets/photos/hero-video-poster-sm.webp 640w, /assets/photos/hero-video-poster.webp 1280w" sizes="100vw" width="1280" height="720" alt="" fetchpriority="high">
+    </div>
     <div class="wrap hero-center">
       <p class="eyebrow">8th Annual · Sunday, November 1, 2026</p>
       <h1 id="hero-title">Honoring Our Heroes</h1>
@@ -92,6 +96,10 @@
         <div><dt>Tickets</dt><dd>Free for veterans + 1 guest<br>$10 for all other guests</dd></div>
       </dl>
     </div>
+    <button class="hero-video-toggle" type="button" hidden aria-pressed="false">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/><path class="i-play" d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      <span class="label">Pause background video</span>
+    </button>
   </section>
 
   <!-- How to attend -->
