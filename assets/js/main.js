@@ -268,3 +268,64 @@
   // A bookmark to /gallery/#slideshow opens the photo choice straight away
   if (location.hash === '#slideshow') openChooser();
 })();
+
+// Home hero background video: muted YouTube loop; thumbnail with reduced motion or Save-Data
+(function () {
+  var hero = document.querySelector('.hero-video[data-video-id]');
+  if (!hero) return;
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (calm.matches || saveData) return;
+
+  var id = hero.getAttribute('data-video-id');
+  var media = hero.querySelector('.hero-media');
+  var btn = hero.querySelector('.hero-video-toggle');
+  var origin = 'https://www.youtube-nocookie.com';
+  var frame = document.createElement('iframe');
+  frame.src = origin + '/embed/' + id + '?autoplay=1&mute=1&loop=1&playlist=' + id +
+    '&controls=0&disablekb=1&fs=0&iv_load_policy=3&playsinline=1&rel=0&enablejsapi=1&origin=' + encodeURIComponent(location.origin);
+  frame.title = 'Background video from a past Honoring Our Heroes luncheon (decorative)';
+  frame.setAttribute('aria-hidden', 'true');
+  frame.setAttribute('tabindex', '-1');
+  frame.setAttribute('allow', 'autoplay; encrypted-media');
+  frame.setAttribute('loading', 'lazy');
+
+  // Size the 16:9 player to cover the photo area (whole hero on desktop, top band on phones); oversize a little to crop YouTube's edge overlays
+  function fit() {
+    var w = media.clientWidth, h = media.clientHeight, s = 1.2;
+    if (w / h > 16 / 9) { h = w * 9 / 16; } else { w = h * 16 / 9; }
+    frame.style.width = Math.ceil(w * s) + 'px';
+    frame.style.height = Math.ceil(h * s) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+
+  function send(func) {
+    if (frame.contentWindow) frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: [] }), origin);
+  }
+
+  // Only reveal the video (and the pause button) once it is really playing
+  window.addEventListener('message', function (e) {
+    if (e.origin !== origin || e.source !== frame.contentWindow) return;
+    var d; try { d = JSON.parse(e.data); } catch (err) { return; }
+    var state = d && d.info && d.info.playerState;
+    if (state === 1 && !media.classList.contains('is-playing')) {
+      media.classList.add('is-playing');
+      btn.hidden = false;
+    }
+  });
+  frame.addEventListener('load', function () {
+    frame.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 1 }), origin);
+  });
+
+  btn.addEventListener('click', function () {
+    var paused = btn.getAttribute('aria-pressed') !== 'true';
+    send(paused ? 'pauseVideo' : 'playVideo');
+    btn.setAttribute('aria-pressed', paused);
+  });
+
+  // Stop the video if the visitor turns on reduced motion mid-visit
+  if (calm.addEventListener) calm.addEventListener('change', function (e) { if (e.matches && btn.getAttribute('aria-pressed') !== 'true') btn.click(); });
+
+  media.appendChild(frame);
+})();
