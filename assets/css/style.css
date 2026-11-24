@@ -438,6 +438,12 @@ figcaption { margin-top: 12px; font-size: 1rem; color: var(--light-soft); }
 .hero-video-toggle:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 .hero-video-toggle .label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .hero-video-toggle .i-play, .hero-video-toggle[aria-pressed="true"] .i-pause { display: none; }
+/* phones/tablets: no video; photo shows clearly up top and fades into navy behind the text */
+@media (max-width: 899px) {
+  .hero-video { padding-top: min(78vw, 340px); }
+  .hero-media { bottom: auto; height: min(118vw, 520px); }
+  .hero-media::after { background: linear-gradient(to bottom, rgba(15, 29, 53, .15) 0%, rgba(15, 29, 53, .25) 38%, rgba(15, 29, 53, .9) 62%, var(--navy) 82%); }
+}
 .hero-video-toggle[aria-pressed="true"] .i-play { display: inline; }
 
 /* photos */
